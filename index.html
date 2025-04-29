@@ -1,845 +1,513 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE MIND Self‑Discovery Journal</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Noto Sans JP', sans-serif;
-        }
-        
-        body {
-            background-color: #F7FAFC;
-            color: #4A5568;
-            line-height: 1.6;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px solid #E2E8F0;
-            margin-bottom: 40px;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #1A365D;
-        }
-        
-        .date {
-            color: #718096;
-            font-size: 14px;
-        }
-        
-        .title-section {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-        }
-        
-        h1 {
-            font-size: 48px;
-            color: #1A365D;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 4px;
-            background-color: #3182CE;
-            border-radius: 2px;
-        }
-        
-        .subtitle {
-            font-size: 24px;
-            color: #2A4365;
-            margin-bottom: 30px;
-            font-style: italic;
-        }
-        
-        .quote {
-            font-size: 22px;
-            color: #3182CE;
-            font-weight: 500;
-            margin: 30px 0;
-            padding: 20px;
-            border-left: 4px solid #3182CE;
-            background-color: rgba(49, 130, 206, 0.05);
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .section {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            padding: 30px;
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 6px;
-            height: 100%;
-            background-color: #3182CE;
-        }
-        
-        h2 {
-            font-size: 28px;
-            color: #1A365D;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-        
-        h2 i {
-            margin-right: 12px;
-            color: #3182CE;
-        }
-        
-        h3 {
-            font-size: 20px;
-            color: #2A4365;
-            margin: 25px 0 15px;
-        }
-        
-        p {
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
-        
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-        
-        .card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            border-top: 4px solid #3182CE;
-            transition: transform 0.2s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .card-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #2A4365;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .card-title i {
-            margin-right: 8px;
-            color: #3182CE;
-        }
-        
-        .step-list {
-            counter-reset: step-counter;
-            list-style-type: none;
-            padding-left: 0;
-        }
-        
-        .step-list li {
-            position: relative;
-            padding-left: 40px;
-            margin-bottom: 15px;
-            counter-increment: step-counter;
-        }
-        
-        .step-list li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 28px;
-            height: 28px;
-            background-color: #3182CE;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-        
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        
-        .table th, .table td {
-            padding: 12px 15px;
-            border: 1px solid #E2E8F0;
-            text-align: left;
-        }
-        
-        .table th {
-            background-color: #EBF8FF;
-            color: #2A4365;
-            font-weight: 600;
-        }
-        
-        .table tr:nth-child(even) {
-            background-color: #F7FAFC;
-        }
-        
-        .icon-list {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        
-        .icon-list li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 12px;
-        }
-        
-        .icon-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: #38A169;
-            font-weight: bold;
-        }
-        
-        .timeline {
-            position: relative;
-            margin: 40px 0;
-            padding-left: 30px;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background-color: #3182CE;
-            border-radius: 2px;
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin-bottom: 30px;
-            padding-left: 20px;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -28px;
-            top: 5px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background-color: white;
-            border: 3px solid #3182CE;
-        }
-        
-        .timeline-title {
-            font-weight: 600;
-            color: #2A4365;
-            margin-bottom: 5px;
-        }
-        
-        .emotion-map {
-            background-color: #F7FAFC;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            position: relative;
-        }
-        
-        .emotion-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 10px;
-            margin-top: 15px;
-        }
-        
-        .emotion-day {
-            background-color: white;
-            border-radius: 8px;
-            padding: 10px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        
-        .emotion-day-title {
-            font-weight: 600;
-            color: #2A4365;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-        
-        .emotion-dots {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 5px;
-            margin-top: 8px;
-        }
-        
-        .emotion-dot {
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-        }
-        
-        .highlight-box {
-            background-color: #EBF8FF;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            border-left: 4px solid #3182CE;
-        }
-        
-        .highlight-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #2A4365;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .highlight-title i {
-            margin-right: 8px;
-            color: #3182CE;
-        }
-        
-        .rating {
-            display: inline-block;
-            color: #DD6B20;
-            letter-spacing: 3px;
-        }
-        
-        .footer {
-            text-align: center;
-            margin-top: 60px;
-            padding-top: 20px;
-            border-top: 1px solid #E2E8F0;
-            color: #718096;
-            font-size: 14px;
-        }
-        
-        .divider {
-            height: 4px;
-            background: linear-gradient(to right, #3182CE, #38A169);
-            border-radius: 2px;
-            margin: 40px 0;
-        }
-        
-        @media (max-width: 768px) {
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .emotion-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE MIND ジャーナリングノート</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+    
+    body {
+      background-color: #f8fafc;
+      color: #4A5568;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    header {
+      background-color: #1A365D;
+      color: white;
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .header-title {
+      display: flex;
+      align-items: center;
+    }
+    
+    .header-title h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-left: 12px;
+    }
+    
+    .header-meta {
+      font-size: 14px;
+      text-align: right;
+    }
+    
+    .content {
+      padding: 32px;
+    }
+    
+    .intro-section {
+      background-color: #E2E8F0;
+      padding: 24px;
+      border-radius: 8px;
+      margin-bottom: 32px;
+      border-left: 6px solid #3182CE;
+    }
+    
+    .intro-section p {
+      font-size: 18px;
+      color: #2D3748;
+    }
+    
+    .journey-map {
+      display: flex;
+      justify-content: space-between;
+      margin: 40px 0;
+      position: relative;
+    }
+    
+    .journey-map::before {
+      content: "";
+      position: absolute;
+      height: 4px;
+      background-color: #3182CE;
+      top: 24px;
+      left: 50px;
+      right: 50px;
+      z-index: 1;
+    }
+    
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+      width: 16%;
+    }
+    
+    .step-number {
+      background-color: #3182CE;
+      color: white;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+    
+    .step-title {
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      color: #2A4365;
+    }
+    
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      padding: 24px;
+      margin-bottom: 32px;
+      border-top: 5px solid #3182CE;
+    }
+    
+    .card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    
+    .card-icon {
+      background-color: #E2E8F0;
+      color: #3182CE;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-right: 16px;
+    }
+    
+    .card h2 {
+      font-size: 24px;
+      color: #2A4365;
+      font-weight: 700;
+    }
+    
+    .card h3 {
+      font-size: 18px;
+      color: #3182CE;
+      margin: 16px 0 8px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .card h3 i {
+      margin-right: 8px;
+    }
+    
+    .card p {
+      margin-bottom: 16px;
+    }
+    
+    .mood-check {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 16px 0;
+    }
+    
+    .mood-item {
+      display: flex;
+      align-items: center;
+      background-color: #E2E8F0;
+      padding: 8px 16px;
+      border-radius: 20px;
+    }
+    
+    .mood-item input {
+      margin-right: 8px;
+    }
+    
+    .energy-level {
+      display: flex;
+      justify-content: space-between;
+      margin: 24px 0;
+      position: relative;
+    }
+    
+    .energy-level::before {
+      content: "";
+      position: absolute;
+      height: 4px;
+      background: linear-gradient(to right, #DD6B20, #3182CE, #38A169);
+      top: 24px;
+      left: 0;
+      right: 0;
+      z-index: 1;
+    }
+    
+    .energy-point {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .energy-circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 3px solid white;
+      background-color: #E2E8F0;
+      margin-bottom: 8px;
+    }
+    
+    .energy-label {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    .input-field {
+      width: 100%;
+      border: 1px solid #CBD5E0;
+      border-radius: 4px;
+      padding: 12px;
+      margin: 8px 0 16px;
+      min-height: 80px;
+      font-size: 14px;
+      color: #4A5568;
+    }
+    
+    .message-box {
+      background-color: #E2E8F0;
+      border-left: 4px solid #38A169;
+      padding: 16px;
+      margin: 32px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .message-box p {
+      font-style: italic;
+      color: #2D3748;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    
+    footer {
+      background-color: #2A4365;
+      color: white;
+      padding: 16px 32px;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    @media (max-width: 768px) {
+      .journey-map {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+      
+      .journey-map::before {
+        width: 4px;
+        height: auto;
+        top: 0;
+        bottom: 0;
+        left: 24px;
+        right: auto;
+      }
+      
+      .step {
+        flex-direction: row;
+        width: 100%;
+      }
+      
+      .step-number {
+        margin-right: 16px;
+        margin-bottom: 0;
+      }
+      
+      .energy-level {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+      
+      .energy-level::before {
+        width: 4px;
+        height: auto;
+        top: 0;
+        bottom: 0;
+        left: 12px;
+        right: auto;
+      }
+      
+      .energy-point {
+        flex-direction: row;
+      }
+      
+      .energy-circle {
+        margin-right: 16px;
+        margin-bottom: 0;
+      }
+      
+      .mood-check {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="logo">THE MIND JOURNAL</div>
-            <div class="date">2023年版</div>
-        </header>
-        
-        <div class="title-section">
-            <h1>THE MIND Self‑Discovery Journal</h1>
-            <div class="subtitle">テーマ: 自分を知る</div>
-            <div class="quote">
-                "答えはいつも、自分の内側にある。"
-            </div>
+  <div class="container">
+    <header>
+      <div class="header-title">
+        <span style="font-size: 42px;">📖</span>
+        <h1>THE MIND ジャーナリングノート</h1>
+      </div>
+      <div class="header-meta">
+        <p>1日分サンプル</p>
+        <p>Ver 1.0</p>
+      </div>
+    </header>
+    
+    <div class="content">
+      <div class="intro-section">
+        <p>このジャーナルは、あなたの内面と向き合い、自己理解を深めるための6ステップガイドです。日々の感情や思考を整理し、新たな視点を見つけるお手伝いをします。</p>
+      </div>
+      
+      <div class="journey-map">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-title">今日の自分を<br>チェック</div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-title">向き合いたい<br>テーマ</div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-title">立ちはだかる<br>もの</div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-title">本音を<br>探る</div>
+        </div>
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-title">ビリーフを<br>書き換える</div>
+        </div>
+        <div class="step">
+          <div class="step-number">6</div>
+          <div class="step-title">ふり<br>かえり</div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">📅</div>
+          <h2>DAY _ （日付を書くスペース）</h2>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">🔍</div>
+          <h2>STEP 1：今日の自分をチェックする</h2>
         </div>
         
-        <div class="section">
-            <h2><i>📘</i> 使い方ガイド</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <div class="card-title"><i>⏱️</i> 時間的コミットメント</div>
-                    <p>1日15分、ペンが進むところから書く。</p>
-                    <p>短い時間でも継続することで、自己理解が深まります。</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><i>🌊</i> 思考の流れに任せる</div>
-                    <p>正解を探さず「思いつくままに」をルールに。</p>
-                    <p>自己検閲せずに書くことで、本当の自分と向き合えます。</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><i>💡</i> 感情の動きを捉える</div>
-                    <p>感情が動いたら、その場でページを開く習慣を。</p>
-                    <p>リアルタイムの感情を記録することで、パターンが見えてきます。</p>
-                </div>
-            </div>
+        <h3>🖊️ 気分にチェック（複数OK）：</h3>
+        <div class="mood-check">
+          <div class="mood-item">
+            <input type="checkbox" id="mood1">
+            <label for="mood1">安心</label>
+          </div>
+          <div class="mood-item">
+            <input type="checkbox" id="mood2">
+            <label for="mood2">楽しい</label>
+          </div>
+          <div class="mood-item">
+            <input type="checkbox" id="mood3">
+            <label for="mood3">不安</label>
+          </div>
+          <div class="mood-item">
+            <input type="checkbox" id="mood4">
+            <label for="mood4">イライラ</label>
+          </div>
+          <div class="mood-item">
+            <input type="checkbox" id="mood5">
+            <label for="mood5">モヤモヤ</label>
+          </div>
+          <div class="mood-item">
+            <input type="checkbox" id="mood6">
+            <label for="mood6">落ち込んでいる</label>
+          </div>
+          <div class="mood-item">
+            <input type="checkbox" id="mood7">
+            <label for="mood7">ワクワク</label>
+          </div>
+          <div class="mood-item">
+            <input type="checkbox" id="mood8">
+            <label for="mood8">他（＿＿＿＿）</label>
+          </div>
         </div>
         
-        <div class="section">
-            <h2><i>📊</i> 1. Snapshot of Me Today</h2>
-            <p>毎日の自分の状態を客観的に記録するフレームワークです。自己観察の習慣を育てます。</p>
-            
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th colspan="2">今日の私は…</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>① 3つの形容詞で今の自分を表す</td>
-                        <td>例: 穏やか、好奇心旺盛、少し疲れている</td>
-                    </tr>
-                    <tr>
-                        <td>② 体とエネルギーの状態を0‑10で採点</td>
-                        <td>身体: 7/10 エネルギー: 6/10</td>
-                    </tr>
-                    <tr>
-                        <td>③ 今、心に浮かぶ一番強い感情は？</td>
-                        <td>例: 期待と不安が入り混じっている</td>
-                    </tr>
-                    <tr>
-                        <td>④ その感情が伝えたいニーズは？</td>
-                        <td>例: 新しいプロジェクトで成功したい欲求</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <div class="highlight-box">
-                <div class="highlight-title"><i>💡</i> 活用のコツ</div>
-                <p>日々の変化を追跡することで、自分の調子やパターンを把握できます。特に感情とニーズの関連性を見ることで、自分の本当の欲求が明らかになります。</p>
-            </div>
+        <h3>🖊️ エネルギー感は？</h3>
+        <div class="energy-level">
+          <div class="energy-point">
+            <div class="energy-circle" style="background-color: #DD6B20;"></div>
+            <div class="energy-label">低い</div>
+          </div>
+          <div class="energy-point">
+            <div class="energy-circle" style="background-color: #3182CE;"></div>
+            <div class="energy-label">普通</div>
+          </div>
+          <div class="energy-point">
+            <div class="energy-circle" style="background-color: #38A169;"></div>
+            <div class="energy-label">高い</div>
+          </div>
         </div>
         
-        <div class="section">
-            <h2><i>🧭</i> 2. Core Values Excavation</h2>
-            <p>自分の核となる価値観を発掘し、明確化するためのエクササイズです。</p>
-            
-            <ol class="step-list">
-                <li>
-                    <strong>キーワードの洗い出し</strong>
-                    <p>大切だと感じるキーワードを20個書き出します。例: 自由、誠実、創造性、家族、成長、貢献、冒険...</p>
-                </li>
-                <li>
-                    <strong>優先順位付け</strong>
-                    <p>上位5つに◎を付け、それぞれについて具体的な行動例を書きます。</p>
-                    <p>例: 「創造性」→ 新しいアイデアを毎日ノートに書く、定期的にアートクラスに参加する</p>
-                </li>
-                <li>
-                    <strong>活用方法</strong>
-                    <p>迷った時、このページを見返します。意思決定の際に、自分の価値観に沿っているかを確認する基準になります。</p>
-                </li>
-            </ol>
-            
-            <div class="highlight-box">
-                <div class="highlight-title"><i>🔍</i> 深掘りのヒント</div>
-                <p>「なぜそれが大切なのか？」と5回問い続けると、表面的な価値観の下にある本質的な価値観に到達できます。</p>
-            </div>
+        <h3>🖊️ 今日、心に引っかかっていることがあれば書こう：</h3>
+        <textarea class="input-field" placeholder="自由に書いてみましょう..."></textarea>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">🎯</div>
+          <h2>STEP 2：今日向き合いたいテーマ</h2>
         </div>
         
-        <div class="section">
-            <h2><i>✨</i> 3. Strengths & Gifts Inventory</h2>
-            <p>自分の強みや才能を客観的に把握し、自己肯定感を高めるためのワークです。</p>
-            
-            <div class="card-grid">
-                <div class="card">
-                    <div class="card-title"><i>📝</i> ステップ1: 成功体験の列挙</div>
-                    <p>過去1年で「うまくやれた」と思う出来事を10個列挙します。</p>
-                    <p>例: プレゼンで好評を得た、チームの問題を解決した、新しいスキルを習得した...</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><i>🔎</i> ステップ2: 強みの特定</div>
-                    <p>それぞれの出来事で発揮された強み・資質を書き添えます。</p>
-                    <p>例: 「プレゼン」→ 明確な説明力、聴衆への共感力、視覚的表現力</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><i>📊</i> ステップ3: パターン分析</div>
-                    <p>共通パターンをマーカーで可視化します。</p>
-                    <p>繰り返し現れる強みが、あなたの核となる才能です。</p>
-                </div>
-            </div>
-            
-            <div class="highlight-box">
-                <div class="highlight-title"><i>💪</i> 活用法</div>
-                <p>特定した強みを意識的に活用する機会を増やすことで、自己効力感とパフォーマンスを高められます。また、自分の強みリストは自信が揺らいだときの心の支えになります。</p>
-            </div>
+        <h3>🖊️ 向き合いたいこと、目指したい未来は？</h3>
+        <p>（例：もっと自信を持って話したい、怒りをコントロールしたい、etc.）</p>
+        <textarea class="input-field" placeholder="あなたの目標や願いを書いてみましょう..."></textarea>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">🚧</div>
+          <h2>STEP 3：今、立ちはだかっているもの</h2>
         </div>
         
-        <div class="section">
-            <h2><i>🔍</i> 4. Limiting Beliefs Spotlight</h2>
-            <p>自分を制限している思い込みを特定し、書き換えるためのフレームワークです。</p>
-            
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>シチュエーション</th>
-                        <th>思い込み（ビリーフ）</th>
-                        <th>根拠は？</th>
-                        <th>反証は？</th>
-                        <th>新しい前提</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>新しいプロジェクトへの応募</td>
-                        <td>「私には経験が足りない」</td>
-                        <td>過去に似た役割をしたことがない</td>
-                        <td>他のスキルで補える、学習能力が高い</td>
-                        <td>「経験は挑戦から生まれる。私は学ぶ力がある」</td>
-                    </tr>
-                    <tr>
-                        <td>意見を述べる場面</td>
-                        <td>「批判されるかもしれない」</td>
-                        <td>過去に否定された経験</td>
-                        <td>多くの場合、意見は歓迎される</td>
-                        <td>「私の視点は価値があり、共有する価値がある」</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <div class="highlight-box">
-                <div class="highlight-title"><i>🧠</i> 思い込み書き換えのプロセス</div>
-                <p>制限的な思い込みに気づいたら、まずそれを紙に書き出します。次に、その思い込みの根拠を探り、反証となる事例や証拠を集めます。最後に、より自分を支える新しい前提を作り、繰り返し自分に言い聞かせます。</p>
-            </div>
+        <h3>🖊️ 行動・思考・感情で引っかかっているものは？</h3>
+        <p>（例：失敗するのが怖い、モヤモヤして動けない）</p>
+        <textarea class="input-field" placeholder="障壁となっているものを書き出してみましょう..."></textarea>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">🔮</div>
+          <h2>STEP 4：心の奥にある本音を探る</h2>
         </div>
         
-        <div class="section">
-            <h2><i>🎨</i> 5. Emotional Landscape Map (週次)</h2>
-            <p>1週間の感情の流れを視覚化し、パターンを発見するためのツールです。</p>
-            
-            <div class="emotion-map">
-                <div class="emotion-grid">
-                    <div class="emotion-day">
-                        <div class="emotion-day-title">月曜日</div>
-                        <div class="emotion-dots">
-                            <div class="emotion-dot" style="background-color: #3182CE;"></div>
-                            <div class="emotion-dot" style="background-color: #DD6B20;"></div>
-                        </div>
-                    </div>
-                    <div class="emotion-day">
-                        <div class="emotion-day-title">火曜日</div>
-                        <div class="emotion-dots">
-                            <div class="emotion-dot" style="background-color: #38A169;"></div>
-                        </div>
-                    </div>
-                    <div class="emotion-day">
-                        <div class="emotion-day-title">水曜日</div>
-                        <div class="emotion-dots">
-                            <div class="emotion-dot" style="background-color: #38A169;"></div>
-                            <div class="emotion-dot" style="background-color: #3182CE;"></div>
-                        </div>
-                    </div>
-                    <div class="emotion-day">
-                        <div class="emotion-day-title">木曜日</div>
-                        <div class="emotion-dots">
-                            <div class="emotion-dot" style="background-color: #DD6B20;"></div>
-                        </div>
-                    </div>
-                    <div class="emotion-day">
-                        <div class="emotion-day-title">金曜日</div>
-                        <div class="emotion-dots">
-                            <div class="emotion-dot" style="background-color: #3182CE;"></div>
-                            <div class="emotion-dot" style="background-color: #38A169;"></div>
-                        </div>
-                    </div>
-                    <div class="emotion-day">
-                        <div class="emotion-day-title">土曜日</div>
-                        <div class="emotion-dots">
-                            <div class="emotion-dot" style="background-color: #38A169;"></div>
-                        </div>
-                    </div>
-                    <div class="emotion-day">
-                        <div class="emotion-day-title">日曜日</div>
-                        <div class="emotion-dots">
-                            <div class="emotion-dot" style="background-color: #DD6B20;"></div>
-                            <div class="emotion-dot" style="background-color: #3182CE;"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div style="margin-top: 20px;">
-                    <p><span style="display: inline-block; width: 15px; height: 15px; border-radius: 50%; background-color: #3182CE; margin-right: 8px;"></span> 喜び・満足</p>
-                    <p><span style="display: inline-block; width: 15px; height: 15px; border-radius: 50%; background-color: #DD6B20; margin-right: 8px;"></span> 不安・緊張</p>
-                    <p><span style="display: inline-block; width: 15px; height: 15px; border-radius: 50%; background-color: #38A169; margin-right: 8px;"></span> 平穏・リラックス</p>
-                </div>
-            </div>
-            
-            <h3>使い方のポイント</h3>
-            <ul class="icon-list">
-                <li>1週間で感じた主な感情を色付きドットでプロットします</li>
-                <li>各感情のトリガーとなった出来事を記録します</li>
-                <li>週末に振り返り、感情パターンから学びを抽出します</li>
-                <li>「特定の曜日」「特定の活動」と感情の関連性を分析します</li>
-            </ul>
+        <h3>🖊️ 隠れている願いや怖れは？</h3>
+        <p>（例：「認められたい」「拒絶されたくない」）</p>
+        <textarea class="input-field" placeholder="深層にある感情や欲求を探ってみましょう..."></textarea>
+        
+        <h3>🖊️ そこから見える、今のビリーフは？</h3>
+        <p>（例：「うまくやらないと価値がない」）</p>
+        <textarea class="input-field" placeholder="自分の信念や思い込みを書き出してみましょう..."></textarea>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">✨</div>
+          <h2>STEP 5：ビリーフを書き換えて、新しい一歩へ</h2>
         </div>
         
-        <div class="section">
-            <h2><i>📈</i> 6. Life Peaks & Valleys Timeline</h2>
-            <p>人生の起伏を時系列で可視化し、そこから得た学びを明確にするワークです。</p>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-title">10代前半: 新しい学校への転校</div>
-                    <p>環境の変化は最初は恐れていたが、新しい友人関係と自己発見につながった。</p>
-                    <p><strong>学び:</strong> 変化は成長の機会である</p>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-title">20代前半: 大学卒業と就職</div>
-                    <p>理想と現実のギャップに苦しんだ時期。しかし自分の価値観を見つめ直すきっかけに。</p>
-                    <p><strong>学び:</strong> 困難は自己理解を深める機会</p>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-title">20代後半: 海外赴任</div>
-                    <p>未知の環境での挑戦。言語や文化の壁を乗り越え、大きな自信につながった。</p>
-                    <p><strong>学び:</strong> 自分の適応力と回復力を信じること</p>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-title">30代前半: キャリアの転機</div>
-                    <p>情熱を失った仕事から、本当にやりたいことへの転換。不安もあったが、充実感を得られた。</p>
-                    <p><strong>学び:</strong> 内なる声に従う勇気が幸福をもたらす</p>
-                </div>
-            </div>
-            
-            <div class="highlight-box">
-                <div class="highlight-title"><i>🔑</i> 活用のヒント</div>
-                <p>人生の谷底と思えた経験から、どのような強さや知恵を得たかに注目してください。また、ピーク体験に共通する要素を見つけることで、あなたを活き活きさせる要因が見えてきます。</p>
-            </div>
+        <h3>🖊️ 新しいビリーフ（これから育てたい考え方）：</h3>
+        <textarea class="input-field" placeholder="より自分を支える新しい考え方を探してみましょう..."></textarea>
+        
+        <h3>🖊️ 今日できる小さなアクションは？</h3>
+        <textarea class="input-field" placeholder="具体的な一歩を書き出してみましょう..."></textarea>
+      </div>
+      
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">🌙</div>
+          <h2>STEP 6：ふりかえり（夜・または翌朝に書いてOK）</h2>
         </div>
         
-        <div class="section">
-            <h2><i>🔭</i> 7. Passion & Curiosity Tracker</h2>
-            <p>自分の情熱や好奇心の対象を追跡し、エネルギーの源泉を発見するツールです。</p>
-            
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>興味・関心事</th>
-                        <th>気づいた日付</th>
-                        <th>投資したい度</th>
-                        <th>アクションプラン</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>デジタルイラスト</td>
-                        <td>4月15日</td>
-                        <td><span class="rating">★★★★☆</span></td>
-                        <td>オンラインコースに登録、週末に1時間練習</td>
-                    </tr>
-                    <tr>
-                        <td>持続可能な生活</td>
-                        <td>5月3日</td>
-                        <td><span class="rating">★★★☆☆</span></td>
-                        <td>関連書籍を読む、リサイクルを始める</td>
-                    </tr>
-                    <tr>
-                        <td>瞑想と呼吸法</td>
-                        <td>5月22日</td>
-                        <td><span class="rating">★★★★★</span></td>
-                        <td>毎朝10分の瞑想習慣化、ワークショップ参加</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <h3>トラッキングのポイント</h3>
-            <ul class="icon-list">
-                <li>「これ面白い！」と感じたことをすぐにリストに追加</li>
-                <li>時間・お金を投資したい度を★1‑5で率直に評価</li>
-                <li>小さな一歩から始められるアクションプランを設定</li>
-                <li>定期的に振り返り、継続しているものと消えたものを分析</li>
-            </ul>
-        </div>
+        <h3>🖊️ 今日、自分を大切にできた瞬間：</h3>
+        <textarea class="input-field" placeholder="自分を労わった出来事や感情を思い出してみましょう..."></textarea>
         
-        <div class="section">
-            <h2><i>✨</i> 8. Ideal Day Script</h2>
-            <p>"理想の1日"を朝から夜まで詳細に脚本化するビジョニングエクササイズです。</p>
-            
-            <div class="card-grid">
-                <div class="card">
-                    <div class="card-title"><i>🌅</i> 朝のルーティン</div>
-                    <p>起床時間、最初に感じる感覚、朝食の内容、エネルギーの状態...</p>
-                    <p>例: 「6時に自然と目覚め、深呼吸から一日を始める。窓から差し込む朝日を感じながら、15分の瞑想後、栄養たっぷりの朝食を味わう。」</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><i>☀️</i> 日中の活動</div>
-                    <p>仕事/活動内容、場所、関わる人々、成し遂げること...</p>
-                    <p>例: 「創造的なプロジェクトに没頭する時間と、意義あるコラボレーションの時間のバランスが取れている。自分の強みを生かし、価値を生み出している感覚がある。」</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><i>🌙</i> 夕方〜就寝</div>
-                    <p>夕食、リラックス方法、人との交流、就寝前の習慣...</p>
-                    <p>例: 「大切な人と質の高い会話を楽しみながら手作りの夕食。読書や創作の時間を持ち、感謝の気持ちを書き留めてから心地よい疲れで眠りにつく。」</p>
-                </div>
-            </div>
-            
-            <div class="highlight-box">
-                <div class="highlight-title"><i>💡</i> スクリプト作成のコツ</div>
-                <p>「現実的かどうか」は一旦置いておき、本当に望む一日を描きます。五感を使った描写を心がけ、その日の終わりにどんな気持ちでいるかまで想像してください。完成したスクリプトから、今の生活に取り入れられる小さな要素を見つけましょう。</p>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h2><i>🔍</i> 9. Daily Self‑Inquiry Page</h2>
-            <p>毎日の自己探求を促す朝と夜のリフレクションフレームワークです。</p>
-            
-            <div class="card-grid">
-                <div class="card">
-                    <div class="card-title"><i>🌅</i> Morning Prompt</div>
-                    <ol>
-                        <li><strong>今日私を導く言葉は？</strong><br>
-                        例: 「今日は好奇心を持って各瞬間に臨む」</li>
-                        <li><strong>体が欲しているケアは？</strong><br>
-                        例: 「十分な水分補給と昼休みの短い散歩」</li>
-                        <li><strong>本音で YES / NO を言う場面は？</strong><br>
-                        例: 「追加の仕事依頼には、今の優先事項を考慮して返答する」</li>
-                    </ol>
-                </div>
-                <div class="card">
-                    <div class="card-title"><i>🌙</i> Evening Reflection</div>
-                    <ul class="icon-list">
-                        <li><strong>今日"私らしい"と感じた瞬間</strong><br>
-                        例: 「チームミーティングで率直な意見を共有できた時」</li>
-                        <li><strong>意外な発見・学び</strong><br>
-                        例: 「困難な会話を避けずに臨むと、予想以上に良い結果になることがある」</li>
-                        <li><strong>明日試したい"自分実験"</strong><br>
-                        例: 「会議前に5分間の瞑想を取り入れて、集中力への影響を観察する」</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="highlight-box">
-                <div class="highlight-title"><i>🔄</i> 継続のコツ</div>
-                <p>朝晩のルーティンに組み込み、たった3分でも続けることを優先しましょう。完璧を求めず、キーワードだけでも記録することで習慣化できます。時間をかけて振り返る余裕がある日は、より深く掘り下げてみてください。</p>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h2><i>📊</i> 10. Weekly Pattern Review</h2>
-            <p>1週間のパターンを分析し、気づきを次のアクションにつなげるフレームワークです。</p>
-            
-            <ol class="step-list">
-                <li>
-                    <strong>今週の最大インサイト</strong>
-                    <p>この1週間で得た最も重要な気づきや学びを記録します。</p>
-                    <p>例: 「朝の時間を確保することが、一日の生産性と満足度に大きく影響する」</p>
-                </li>
-                <li>
-                    <strong>繰り返し現れたパターン</strong>
-                    <p>思考・感情・行動の繰り返しパターンを特定します。</p>
-                    <p>例: 「締切が近づくと自己批判が強まる」「SNSをチェックした後に集中力が低下する」</p>
-                </li>
-                <li>
-                    <strong>価値観との一致度</strong>
-                    <p>それらのパターンは自分の価値観と合致しているかを検証します。</p>
-                    <p>例: 「過剰な自己批判は『成長』という価値観とは合致するが、『自己思いやり』とは相反している」</p>
-                </li>
-                <li>
-                    <strong>次週のフォーカス実験</strong>
-                    <p>気づきに基づいた小さな実験や変更点を設定します。</p>
-                    <p>例: 「締切作業の前に3分間の自己肯定的な言葉かけを行う」「作業の合間にSNSではなく深呼吸を取り入れる」</p>
-                </li>
-            </ol>
-        </div>
-        
-        <div class="section">
-            <h2><i>🔄</i> 11. Monthly Identity Reset</h2>
-            <p>月に一度、自己定義を見直し更新するための変容ワークです。</p>
-            
-            <div class="card-grid">
-                <div class="card">
-                    <div class="card-title"><i>📝</i> 自己ステートメントの再定義</div>
-                    <p>自分を表すステートメントを現在形で再定義します。</p>
-                    <p>例: <em>"私は愛と創造性で世界を照らす人間だ"</em></p>
-                    <p>ポイント: 自分の本質や可能性を表現し、アイデンティティレベルから変化を促します。</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><i>🔄</i> ラベルの書き換え</div>
-                    <p>捨てるラベル・欲しいラベルを明確にします。</p>
-                    <table style="width: 100%; margin-top: 10px;">
-                        <tr>
-                            <td style="width: 50%; color: #DD6B20;">捨てるラベル:</td>
-                            <td style="width: 50%; color: #38A169;">欲しいラベル:</td>
-                        </tr>
-                        <tr>
-                            <td>"完璧主義者"</td>
-                            <td>"質を大切にする人"</td>
-                        </tr>
-                        <tr>
-                            <td>"優柔不断な人"</td>
-                            <td>"熟考する意思決定者"</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="card">
-                    <div class="card-title"><i>🚀</i> 10X視点の質問</div>
-                    <p>"もし恐れがゼロなら？"という問いを自分に投げかけます。</p>
-                    <p>例: もし失敗を恐れず、他者の評価を気にせず、リソースが十分にあるなら、何をするか？</p>
-                    <p>この質問から生まれたアイデアをもとに、次の行動を3つ決定します。</p>
-                </div>
-            </div>
-            
-            <div class="highlight-box">
-                <div class="highlight-title"><i>💫</i> 変容のプロセス</div>
-                <p>アイデンティティレベルでの変化は、最も強力で持続的です。毎月のリセットを通じて、自分自身についての固定観念を解き放ち、より本来の自分に近づくことができます。小さな行動から始めて、新しい自己イメージを体現していきましょう。</p>
-            </div>
-        </div>
-        
-        <div class="divider"></div>
-        
-        <div class="quote" style="text-align: center; font-size: 24px; padding: 30px;">
-            ✨ このノートは、外側の評価ではなく、内側の声を拡大するステージ。<br>
-            ページを開くたびに、未知の自分へ出会い直しましょう。
-        </div>
-        
-        <footer class="footer">
-            <p>THE MIND Self‑Discovery Journal © 2023</p>
-            <p>作成日: 2023年11月15日</p>
-        </footer>
+        <h3>🖊️ 明日の自分にかけたいひとこと：</h3>
+        <textarea class="input-field" placeholder="明日の自分へのメッセージを書いてみましょう..."></textarea>
+      </div>
+      
+      <div class="message-box">
+        <h3 style="text-align: center; margin-bottom: 16px;">🌟 THE MINDからの小さなメッセージ 🌟</h3>
+        <p>「あなたの感情も、思考も、ぜんぶあなたの大切な一部。<br>
+        　どんな感情が出てきても、大丈夫。今日のあなたも素晴らしい。」</p>
+      </div>
     </div>
+    
+    <footer>
+      <div>© THE MIND ジャーナリングノート</div>
+      <div>作成日：2023年</div>
+    </footer>
+  </div>
 </body>
 </html>
