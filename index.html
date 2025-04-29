@@ -1,513 +1,407 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>THE MIND ジャーナリングノート</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Noto Sans JP', sans-serif;
-    }
-    
-    body {
-      background-color: #f8fafc;
-      color: #4A5568;
-      line-height: 1.6;
-      padding: 20px;
-    }
-    
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-    }
-    
-    header {
-      background-color: #1A365D;
-      color: white;
-      padding: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .header-title {
-      display: flex;
-      align-items: center;
-    }
-    
-    .header-title h1 {
-      font-size: 36px;
-      font-weight: 700;
-      margin-left: 12px;
-    }
-    
-    .header-meta {
-      font-size: 14px;
-      text-align: right;
-    }
-    
-    .content {
-      padding: 32px;
-    }
-    
-    .intro-section {
-      background-color: #E2E8F0;
-      padding: 24px;
-      border-radius: 8px;
-      margin-bottom: 32px;
-      border-left: 6px solid #3182CE;
-    }
-    
-    .intro-section p {
-      font-size: 18px;
-      color: #2D3748;
-    }
-    
-    .journey-map {
-      display: flex;
-      justify-content: space-between;
-      margin: 40px 0;
-      position: relative;
-    }
-    
-    .journey-map::before {
-      content: "";
-      position: absolute;
-      height: 4px;
-      background-color: #3182CE;
-      top: 24px;
-      left: 50px;
-      right: 50px;
-      z-index: 1;
-    }
-    
-    .step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-      width: 16%;
-    }
-    
-    .step-number {
-      background-color: #3182CE;
-      color: white;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 20px;
-      margin-bottom: 12px;
-    }
-    
-    .step-title {
-      text-align: center;
-      font-size: 14px;
-      font-weight: 500;
-      color: #2A4365;
-    }
-    
-    .card {
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      padding: 24px;
-      margin-bottom: 32px;
-      border-top: 5px solid #3182CE;
-    }
-    
-    .card-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-    
-    .card-icon {
-      background-color: #E2E8F0;
-      color: #3182CE;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      margin-right: 16px;
-    }
-    
-    .card h2 {
-      font-size: 24px;
-      color: #2A4365;
-      font-weight: 700;
-    }
-    
-    .card h3 {
-      font-size: 18px;
-      color: #3182CE;
-      margin: 16px 0 8px;
-      display: flex;
-      align-items: center;
-    }
-    
-    .card h3 i {
-      margin-right: 8px;
-    }
-    
-    .card p {
-      margin-bottom: 16px;
-    }
-    
-    .mood-check {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 16px 0;
-    }
-    
-    .mood-item {
-      display: flex;
-      align-items: center;
-      background-color: #E2E8F0;
-      padding: 8px 16px;
-      border-radius: 20px;
-    }
-    
-    .mood-item input {
-      margin-right: 8px;
-    }
-    
-    .energy-level {
-      display: flex;
-      justify-content: space-between;
-      margin: 24px 0;
-      position: relative;
-    }
-    
-    .energy-level::before {
-      content: "";
-      position: absolute;
-      height: 4px;
-      background: linear-gradient(to right, #DD6B20, #3182CE, #38A169);
-      top: 24px;
-      left: 0;
-      right: 0;
-      z-index: 1;
-    }
-    
-    .energy-point {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
-    
-    .energy-circle {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      border: 3px solid white;
-      background-color: #E2E8F0;
-      margin-bottom: 8px;
-    }
-    
-    .energy-label {
-      font-size: 14px;
-      font-weight: 500;
-    }
-    
-    .input-field {
-      width: 100%;
-      border: 1px solid #CBD5E0;
-      border-radius: 4px;
-      padding: 12px;
-      margin: 8px 0 16px;
-      min-height: 80px;
-      font-size: 14px;
-      color: #4A5568;
-    }
-    
-    .message-box {
-      background-color: #E2E8F0;
-      border-left: 4px solid #38A169;
-      padding: 16px;
-      margin: 32px 0;
-      border-radius: 0 8px 8px 0;
-    }
-    
-    .message-box p {
-      font-style: italic;
-      color: #2D3748;
-      font-size: 16px;
-      line-height: 1.8;
-    }
-    
-    footer {
-      background-color: #2A4365;
-      color: white;
-      padding: 16px 32px;
-      font-size: 12px;
-      display: flex;
-      justify-content: space-between;
-    }
-    
-    @media (max-width: 768px) {
-      .journey-map {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-      }
-      
-      .journey-map::before {
-        width: 4px;
-        height: auto;
-        top: 0;
-        bottom: 0;
-        left: 24px;
-        right: auto;
-      }
-      
-      .step {
-        flex-direction: row;
-        width: 100%;
-      }
-      
-      .step-number {
-        margin-right: 16px;
-        margin-bottom: 0;
-      }
-      
-      .energy-level {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-      }
-      
-      .energy-level::before {
-        width: 4px;
-        height: auto;
-        top: 0;
-        bottom: 0;
-        left: 12px;
-        right: auto;
-      }
-      
-      .energy-point {
-        flex-direction: row;
-      }
-      
-      .energy-circle {
-        margin-right: 16px;
-        margin-bottom: 0;
-      }
-      
-      .mood-check {
-        flex-direction: column;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE MIND - 自分を知るジャーナル</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        
+        body {
+            background-color: #E2E8F0;
+            color: #4A5568;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(26, 54, 93, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background-color: #1A365D;
+            color: white;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-left h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .header-left p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .header-right {
+            text-align: right;
+            font-size: 14px;
+        }
+        
+        .main-content {
+            padding: 40px;
+        }
+        
+        .intro-card {
+            background-color: #E2E8F0;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 40px;
+            border-left: 5px solid #3182CE;
+        }
+        
+        .journal-flow {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .journal-step {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(113, 128, 150, 0.15);
+            width: 48%;
+            margin-bottom: 25px;
+            padding: 25px;
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background-color: #3182CE;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .step-title {
+            color: #2A4365;
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 3px solid #DD6B20;
+        }
+        
+        .question {
+            margin-bottom: 20px;
+        }
+        
+        .question h4 {
+            color: #2D3748;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .question h4 span {
+            margin-right: 8px;
+            color: #3182CE;
+        }
+        
+        .answer-field {
+            background-color: #E2E8F0;
+            border-radius: 4px;
+            padding: 12px;
+            min-height: 50px;
+            border: 1px dashed #718096;
+        }
+        
+        .example-text {
+            font-size: 13px;
+            color: #718096;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
+        .message-card {
+            background: linear-gradient(135deg, #1A365D, #3182CE);
+            color: white;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .message-card:before {
+            content: "🌟";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+        }
+        
+        .message-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .message-card blockquote {
+            font-size: 18px;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 0;
+        }
+        
+        .summary-section {
+            background-color: #E2E8F0;
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        .summary-section h2 {
+            color: #1A365D;
+            font-size: 24px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .summary-section h2 span {
+            margin-right: 10px;
+        }
+        
+        .summary-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .summary-text {
+            width: 60%;
+        }
+        
+        .summary-text p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .summary-text strong {
+            color: #2A4365;
+            background-color: rgba(49, 130, 206, 0.1);
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+        
+        .summary-visual {
+            width: 35%;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(113, 128, 150, 0.15);
+        }
+        
+        .process-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .process-step {
+            text-align: center;
+            margin-bottom: 15px;
+            position: relative;
+            width: 100%;
+        }
+        
+        .process-step:not(:last-child):after {
+            content: "↓";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #3182CE;
+            font-size: 20px;
+        }
+        
+        .process-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #3182CE;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 20px;
+        }
+        
+        .process-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: #2A4365;
+        }
+        
+        footer {
+            background-color: #1A365D;
+            color: white;
+            padding: 20px 40px;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .journal-step {
+                width: 100%;
+            }
+            
+            .summary-content {
+                flex-direction: column;
+            }
+            
+            .summary-text, .summary-visual {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="header-title">
-        <span style="font-size: 42px;">📖</span>
-        <h1>THE MIND ジャーナリングノート</h1>
-      </div>
-      <div class="header-meta">
-        <p>1日分サンプル</p>
-        <p>Ver 1.0</p>
-      </div>
-    </header>
-    
-    <div class="content">
-      <div class="intro-section">
-        <p>このジャーナルは、あなたの内面と向き合い、自己理解を深めるための6ステップガイドです。日々の感情や思考を整理し、新たな視点を見つけるお手伝いをします。</p>
-      </div>
-      
-      <div class="journey-map">
-        <div class="step">
-          <div class="step-number">1</div>
-          <div class="step-title">今日の自分を<br>チェック</div>
-        </div>
-        <div class="step">
-          <div class="step-number">2</div>
-          <div class="step-title">向き合いたい<br>テーマ</div>
-        </div>
-        <div class="step">
-          <div class="step-number">3</div>
-          <div class="step-title">立ちはだかる<br>もの</div>
-        </div>
-        <div class="step">
-          <div class="step-number">4</div>
-          <div class="step-title">本音を<br>探る</div>
-        </div>
-        <div class="step">
-          <div class="step-number">5</div>
-          <div class="step-title">ビリーフを<br>書き換える</div>
-        </div>
-        <div class="step">
-          <div class="step-number">6</div>
-          <div class="step-title">ふり<br>かえり</div>
-        </div>
-      </div>
-      
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">📅</div>
-          <h2>DAY _ （日付を書くスペース）</h2>
-        </div>
-      </div>
-      
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">🔍</div>
-          <h2>STEP 1：今日の自分をチェックする</h2>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <h1>🌱 THE MIND — 自分を知る JOURNAL</h1>
+                <p>内なる声に耳を傾け、自然な変化を育むためのジャーナリング</p>
+            </div>
+            <div class="header-right">
+                <p>DAY ___</p>
+                <p>Date: ___________</p>
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <div class="intro-card">
+                <p>このジャーナルは、目標達成を急がせるものではなく、<strong>あなたの内側にある"自然に変わる力"を目覚めさせるためのツール</strong>です。今日の自分と向き合い、小さな気づきを大切にしましょう。</p>
+            </div>
+            
+            <div class="journal-flow">
+                <div class="journal-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">今の自分に聞いてみる</h3>
+                    <div class="question">
+                        <h4><span>🖊️</span> 今日、心と身体はどんな感じ？</h4>
+                        <div class="answer-field"></div>
+                        <p class="example-text">例：胸がモヤモヤしている、頭が重い、嬉しい感覚がある</p>
+                    </div>
+                </div>
+                
+                <div class="journal-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">今日、浮かんでくる感情・思考を書き出す</h3>
+                    <div class="question">
+                        <h4><span>🖊️</span> 今、1番強く感じていることは？</h4>
+                        <div class="answer-field"></div>
+                    </div>
+                    <div class="question">
+                        <h4><span>🖊️</span> それに対してどんな思考が湧いている？</h4>
+                        <div class="answer-field"></div>
+                    </div>
+                </div>
+                
+                <div class="journal-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">さらに深く</h3>
+                    <div class="question">
+                        <h4><span>🖊️</span> この感情・思考の"奥"にある、本当の願いは？</h4>
+                        <div class="answer-field"></div>
+                        <p class="example-text">例：「もっと安心したい」「本当は認めてほしい」</p>
+                    </div>
+                    <div class="question">
+                        <h4><span>🖊️</span> この願いが生まれた背景を、少しだけ想像してみると？</h4>
+                        <div class="answer-field"></div>
+                        <p class="example-text">例：過去の経験、思い込み、傷つき体験など</p>
+                    </div>
+                </div>
+                
+                <div class="journal-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">小さな再選択</h3>
+                    <div class="question">
+                        <h4><span>🖊️</span> 今日、自分にどんな言葉をかけてあげたい？</h4>
+                        <div class="answer-field"></div>
+                    </div>
+                    <div class="question">
+                        <h4><span>🖊️</span> 今日、自分を大切にするためにできる小さなことは？</h4>
+                        <div class="answer-field"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="message-card">
+                <h3>🌟 THE MINDからのメッセージ 🌟</h3>
+                <blockquote>
+                    「どんな自分も、ここにいていい。<br>
+                    　気づいた時点で、あなたはもう変わり始めている。」
+                </blockquote>
+            </div>
+            
+            <div class="summary-section">
+                <h2><span>📝</span> まとめ</h2>
+                <div class="summary-content">
+                    <div class="summary-text">
+                        <p>この「自分を知るジャーナル」は、目標達成を急がせるものではなく、<strong>"自然に変わる力"を目覚めさせるためのツール</strong>になります。</p>
+                        <p>焦りや「こうならなきゃ」を手放して、<strong>今の自分を深く知ること</strong>そのものを旅にできます。</p>
+                    </div>
+                    <div class="summary-visual">
+                        <div class="process-visual">
+                            <div class="process-step">
+                                <div class="process-icon">👁️</div>
+                                <div class="process-text">自己観察</div>
+                            </div>
+                            <div class="process-step">
+                                <div class="process-icon">🔍</div>
+                                <div class="process-text">深い気づき</div>
+                            </div>
+                            <div class="process-step">
+                                <div class="process-icon">🌱</div>
+                                <div class="process-text">自然な変化</div>
+                            </div>
+                            <div class="process-step">
+                                <div class="process-icon">✨</div>
+                                <div class="process-text">自己成長</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         
-        <h3>🖊️ 気分にチェック（複数OK）：</h3>
-        <div class="mood-check">
-          <div class="mood-item">
-            <input type="checkbox" id="mood1">
-            <label for="mood1">安心</label>
-          </div>
-          <div class="mood-item">
-            <input type="checkbox" id="mood2">
-            <label for="mood2">楽しい</label>
-          </div>
-          <div class="mood-item">
-            <input type="checkbox" id="mood3">
-            <label for="mood3">不安</label>
-          </div>
-          <div class="mood-item">
-            <input type="checkbox" id="mood4">
-            <label for="mood4">イライラ</label>
-          </div>
-          <div class="mood-item">
-            <input type="checkbox" id="mood5">
-            <label for="mood5">モヤモヤ</label>
-          </div>
-          <div class="mood-item">
-            <input type="checkbox" id="mood6">
-            <label for="mood6">落ち込んでいる</label>
-          </div>
-          <div class="mood-item">
-            <input type="checkbox" id="mood7">
-            <label for="mood7">ワクワク</label>
-          </div>
-          <div class="mood-item">
-            <input type="checkbox" id="mood8">
-            <label for="mood8">他（＿＿＿＿）</label>
-          </div>
-        </div>
-        
-        <h3>🖊️ エネルギー感は？</h3>
-        <div class="energy-level">
-          <div class="energy-point">
-            <div class="energy-circle" style="background-color: #DD6B20;"></div>
-            <div class="energy-label">低い</div>
-          </div>
-          <div class="energy-point">
-            <div class="energy-circle" style="background-color: #3182CE;"></div>
-            <div class="energy-label">普通</div>
-          </div>
-          <div class="energy-point">
-            <div class="energy-circle" style="background-color: #38A169;"></div>
-            <div class="energy-label">高い</div>
-          </div>
-        </div>
-        
-        <h3>🖊️ 今日、心に引っかかっていることがあれば書こう：</h3>
-        <textarea class="input-field" placeholder="自由に書いてみましょう..."></textarea>
-      </div>
-      
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">🎯</div>
-          <h2>STEP 2：今日向き合いたいテーマ</h2>
-        </div>
-        
-        <h3>🖊️ 向き合いたいこと、目指したい未来は？</h3>
-        <p>（例：もっと自信を持って話したい、怒りをコントロールしたい、etc.）</p>
-        <textarea class="input-field" placeholder="あなたの目標や願いを書いてみましょう..."></textarea>
-      </div>
-      
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">🚧</div>
-          <h2>STEP 3：今、立ちはだかっているもの</h2>
-        </div>
-        
-        <h3>🖊️ 行動・思考・感情で引っかかっているものは？</h3>
-        <p>（例：失敗するのが怖い、モヤモヤして動けない）</p>
-        <textarea class="input-field" placeholder="障壁となっているものを書き出してみましょう..."></textarea>
-      </div>
-      
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">🔮</div>
-          <h2>STEP 4：心の奥にある本音を探る</h2>
-        </div>
-        
-        <h3>🖊️ 隠れている願いや怖れは？</h3>
-        <p>（例：「認められたい」「拒絶されたくない」）</p>
-        <textarea class="input-field" placeholder="深層にある感情や欲求を探ってみましょう..."></textarea>
-        
-        <h3>🖊️ そこから見える、今のビリーフは？</h3>
-        <p>（例：「うまくやらないと価値がない」）</p>
-        <textarea class="input-field" placeholder="自分の信念や思い込みを書き出してみましょう..."></textarea>
-      </div>
-      
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">✨</div>
-          <h2>STEP 5：ビリーフを書き換えて、新しい一歩へ</h2>
-        </div>
-        
-        <h3>🖊️ 新しいビリーフ（これから育てたい考え方）：</h3>
-        <textarea class="input-field" placeholder="より自分を支える新しい考え方を探してみましょう..."></textarea>
-        
-        <h3>🖊️ 今日できる小さなアクションは？</h3>
-        <textarea class="input-field" placeholder="具体的な一歩を書き出してみましょう..."></textarea>
-      </div>
-      
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">🌙</div>
-          <h2>STEP 6：ふりかえり（夜・または翌朝に書いてOK）</h2>
-        </div>
-        
-        <h3>🖊️ 今日、自分を大切にできた瞬間：</h3>
-        <textarea class="input-field" placeholder="自分を労わった出来事や感情を思い出してみましょう..."></textarea>
-        
-        <h3>🖊️ 明日の自分にかけたいひとこと：</h3>
-        <textarea class="input-field" placeholder="明日の自分へのメッセージを書いてみましょう..."></textarea>
-      </div>
-      
-      <div class="message-box">
-        <h3 style="text-align: center; margin-bottom: 16px;">🌟 THE MINDからの小さなメッセージ 🌟</h3>
-        <p>「あなたの感情も、思考も、ぜんぶあなたの大切な一部。<br>
-        　どんな感情が出てきても、大丈夫。今日のあなたも素晴らしい。」</p>
-      </div>
+        <footer>
+            <p>© THE MIND JOURNAL | 作成日: 2023年</p>
+        </footer>
     </div>
-    
-    <footer>
-      <div>© THE MIND ジャーナリングノート</div>
-      <div>作成日：2023年</div>
-    </footer>
-  </div>
 </body>
 </html>
