@@ -3,14 +3,14 @@
 <head>
     <meta charset=""UTF-8"">
     <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
-    <title>THE Mind ジャーナリングノート</title>
+    <title>THE MIND 月間ふりかえりワーク</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
         
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
             font-family: 'Noto Sans JP', sans-serif;
         }
         
@@ -26,7 +26,7 @@
             margin: 0 auto;
             background-color: white;
             border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             overflow: hidden;
         }
         
@@ -42,7 +42,7 @@
         .header-left h1 {
             font-size: 36px;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
         
         .header-left p {
@@ -54,193 +54,289 @@
             text-align: right;
         }
         
-        .header-right .date {
-            font-size: 14px;
-            opacity: 0.8;
+        .introduction {
+            background-color: #E2E8F0;
+            padding: 30px 40px;
+            border-bottom: 1px solid #CBD5E0;
+        }
+        
+        .introduction p {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            background-color: #3182CE;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            font-weight: 500;
         }
         
         .main-content {
             padding: 40px;
         }
         
-        .intro-section {
+        .month-section {
             text-align: center;
-            margin-bottom: 50px;
-            padding: 30px;
-            background-color: #E2E8F0;
-            border-radius: 10px;
+            margin-bottom: 40px;
         }
         
-        .intro-title {
-            font-size: 32px;
-            color: #1A365D;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .intro-title .emoji {
-            font-size: 40px;
-            margin-right: 15px;
-        }
-        
-        .intro-subtitle {
-            font-size: 20px;
+        .month-title {
+            font-size: 28px;
             color: #2A4365;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        
-        .section {
-            margin-bottom: 60px;
-            padding: 30px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-        
-        .section-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #E2E8F0;
-        }
-        
-        .section-emoji {
-            font-size: 32px;
-            margin-right: 15px;
-            background-color: #E2E8F0;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+            font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 20px;
         }
         
-        .section-title {
+        .month-title .icon {
+            margin-right: 15px;
+            font-size: 32px;
+        }
+        
+        .month-input {
+            display: inline-block;
+            border-bottom: 2px dashed #3182CE;
+            padding: 5px 10px;
+            min-width: 150px;
+            text-align: center;
             font-size: 24px;
             color: #3182CE;
-            font-weight: 700;
         }
         
         .card {
             background-color: white;
             border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid #3182CE;
         }
         
-        .highlight-box {
-            background-color: #E2E8F0;
-            border-left: 4px solid #3182CE;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .highlight-text {
-            font-weight: 500;
-            color: #2A4365;
-        }
-        
-        .list-item {
-            display: flex;
-            margin-bottom: 12px;
-        }
-        
-        .list-icon {
-            color: #38A169;
-            margin-right: 10px;
-            flex-shrink: 0;
-        }
-        
-        .two-column {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 30px 0;
-        }
-        
-        .column {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .tips-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        
-        .tip-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            border-top: 4px solid #3182CE;
-        }
-        
-        .tip-header {
+        .card-header {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
-        .tip-icon {
-            background-color: #E2E8F0;
-            color: #3182CE;
+        .card-number {
+            background-color: #3182CE;
+            color: white;
             width: 40px;
             height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 12px;
-            font-size: 18px;
+            font-size: 20px;
+            font-weight: 700;
+            margin-right: 15px;
         }
         
-        .tip-title {
-            font-size: 18px;
-            font-weight: 600;
+        .card-title {
+            color: #2A4365;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        
+        .question-block {
+            margin-bottom: 25px;
+        }
+        
+        .question {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .question-icon {
+            color: #DD6B20;
+            font-size: 24px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .question-text {
+            font-size: 16px;
+            font-weight: 500;
+            color: #2D3748;
+        }
+        
+        .example {
+            background-color: #E2E8F0;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 10px 0 15px 40px;
+            font-size: 14px;
+            color: #4A5568;
+            position: relative;
+        }
+        
+        .example::before {
+            content: ""例："";
+            font-weight: 500;
+            color: #718096;
+        }
+        
+        .input-field {
+            border: 1px solid #CBD5E0;
+            border-radius: 6px;
+            padding: 15px;
+            margin-left: 40px;
+            font-size: 16px;
+            color: #718096;
+            background-color: #F7FAFC;
+            min-height: 60px;
+            width: calc(100% - 40px);
+        }
+        
+        .quote-section {
+            background-color: #1A365D;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin: 50px 0;
+            position: relative;
+        }
+        
+        .quote-icon {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #3182CE;
+        }
+        
+        .quote-content {
+            font-size: 20px;
+            line-height: 1.8;
+            font-weight: 500;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .usage-section {
+            background-color: #E2E8F0;
+            padding: 40px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        
+        .usage-title {
+            font-size: 24px;
+            color: #2A4365;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .usage-title .icon {
+            margin-right: 15px;
+        }
+        
+        .usage-list {
+            list-style: none;
+        }
+        
+        .usage-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .usage-list li::before {
+            content: ""•"";
+            color: #3182CE;
+            font-size: 20px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .highlight-text {
+            background-color: #38A169;
+            color: white;
+            padding: 0 5px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #718096;
+            font-size: 14px;
+            border-top: 1px solid #E2E8F0;
+        }
+        
+        .emotion-map {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0 20px 40px;
+        }
+        
+        .emotion-bubble {
+            background-color: #E2E8F0;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 14px;
+            color: #2A4365;
+            display: inline-block;
+        }
+        
+        .emotion-bubble.positive {
+            background-color: #C6F6D5;
+            color: #22543D;
+        }
+        
+        .emotion-bubble.negative {
+            background-color: #FED7D7;
+            color: #822727;
+        }
+        
+        .emotion-bubble.neutral {
+            background-color: #E2E8F0;
             color: #2A4365;
         }
         
         .process-flow {
             display: flex;
             justify-content: space-between;
-            margin: 40px 0;
+            margin: 30px 0;
             position: relative;
         }
         
-        .process-flow::before {
-            content: '';
+        .process-flow::after {
+            content: """";
             position: absolute;
-            top: 40px;
-            left: 60px;
-            right: 60px;
-            height: 4px;
-            background-color: #E2E8F0;
-            z-index: 1;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background-color: #3182CE;
+            z-index: 0;
         }
         
         .process-step {
-            position: relative;
-            z-index: 2;
+            width: 30%;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             text-align: center;
-            width: 120px;
+            position: relative;
+            z-index: 1;
         }
         
-        .step-circle {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
+        .process-icon {
+            width: 60px;
+            height: 60px;
             background-color: #3182CE;
             color: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -248,91 +344,16 @@
             font-size: 24px;
         }
         
-        .step-text {
-            font-size: 16px;
-            font-weight: 500;
-            color: #2A4365;
-        }
-        
-        .quote-box {
-            background-color: #E2E8F0;
-            border-radius: 8px;
-            padding: 30px;
-            margin: 30px 0;
-            position: relative;
-        }
-        
-        .quote-box::before {
-            content: '""';
-            font-size: 80px;
-            color: #718096;
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            opacity: 0.3;
-        }
-        
-        .quote-text {
+        .process-title {
             font-size: 18px;
-            font-style: italic;
+            font-weight: 700;
             color: #2A4365;
-            padding-left: 40px;
-        }
-        
-        .emotion-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 30px 0;
-        }
-        
-        .emotion-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        
-        .emotion-emoji {
-            font-size: 32px;
             margin-bottom: 10px;
         }
         
-        .emotion-name {
-            font-size: 16px;
-            font-weight: 600;
-            color: #2A4365;
-        }
-        
-        .final-message {
-            text-align: center;
-            margin: 60px 0 40px;
-            padding: 40px;
-            background-color: #E2E8F0;
-            border-radius: 10px;
-        }
-        
-        .final-title {
-            font-size: 24px;
-            color: #1A365D;
-            margin-bottom: 20px;
-        }
-        
-        .final-text {
-            font-size: 18px;
-            color: #2A4365;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #718096;
+        .process-desc {
             font-size: 14px;
-            border-top: 1px solid #E2E8F0;
+            color: #4A5568;
         }
         
         @media (max-width: 768px) {
@@ -346,34 +367,21 @@
                 text-align: center;
             }
             
-            .main-content {
-                padding: 20px;
-            }
-            
-            .section {
-                padding: 20px;
-            }
-            
             .process-flow {
                 flex-direction: column;
-                align-items: center;
+                gap: 20px;
             }
             
-            .process-flow::before {
-                left: 50%;
-                top: 40px;
-                bottom: 40px;
-                width: 4px;
-                height: auto;
-                transform: translateX(-50%);
+            .process-flow::after {
+                display: none;
             }
             
             .process-step {
-                margin-bottom: 40px;
+                width: 100%;
             }
             
-            .two-column {
-                flex-direction: column;
+            .card-header {
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -382,231 +390,219 @@
     <div class=""container"">
         <header>
             <div class=""header-left"">
-                <h1>THE Mind ジャーナリングノート</h1>
-                <p>自分を知る旅のはじまりに</p>
+                <h1>THE MIND 月間ふりかえりワーク</h1>
+                <p>内面的な変化の可視化と次の一歩への橋渡し</p>
             </div>
             <div class=""header-right"">
-                <div class=""date"">2023年版</div>
+                <p>THE MIND ジャーナル</p>
+                <p>月1回のセルフレビュー</p>
             </div>
         </header>
         
+        <div class=""introduction"">
+            <p>「<strong>月間ふりかえりワーク</strong>」は、THE MIND ジャーナルの各日テーマを継続して書いてきた方にとって、<span class=""highlight"">内面的な変化の可視化</span>と<span class=""highlight"">次の一歩への橋渡し</span>となる非常に重要なフェーズです。</p>
+            <p>このパートでは、""感情の記録""ではなく、""感情からの学び""と""自己変容""を言語化する設計にしています。振り返りによって、「気づいて終わり」から「生き方が少しずつ変わっていく」実感が得られる構造です。</p>
+        </div>
+        
         <div class=""main-content"">
-            <div class=""intro-section"">
-                <div class=""intro-title"">
-                    <span class=""emoji"">🌿</span>
-                    <span>INTRODUCTION</span>
+            <div class=""month-section"">
+                <h2 class=""month-title""><span class=""icon"">🌿</span> MONTH <span class=""month-input"">___</span></h2>
+                <p>（振り返る月を記入）</p>
+            </div>
+            
+            <div class=""process-flow"">
+                <div class=""process-step"">
+                    <div class=""process-icon"">📝</div>
+                    <h3 class=""process-title"">記録</h3>
+                    <p class=""process-desc"">感情を意識的に観察し記録する</p>
                 </div>
-                <div class=""intro-subtitle"">
-                    THE Mind ジャーナリングノート 〜自分を知る旅のはじまりに〜
+                <div class=""process-step"">
+                    <div class=""process-icon"">🔍</div>
+                    <h3 class=""process-title"">洞察</h3>
+                    <p class=""process-desc"">感情から学び、パターンを発見する</p>
+                </div>
+                <div class=""process-step"">
+                    <div class=""process-icon"">🚀</div>
+                    <h3 class=""process-title"">変容</h3>
+                    <p class=""process-desc"">気づきを行動に変え、成長につなげる</p>
                 </div>
             </div>
             
-            <div class=""section"">
-                <div class=""section-header"">
-                    <div class=""section-emoji"">🌀</div>
-                    <h2 class=""section-title"">THE Mind ジャーナリングノートとは？／このノートの使い方</h2>
+            <div class=""card"">
+                <div class=""card-header"">
+                    <div class=""card-number"">1</div>
+                    <h3 class=""card-title"">この1ヶ月でよく出てきた感情は？</h3>
                 </div>
                 
-                <div class=""card"">
-                    <div class=""highlight-box"">
-                        <p class=""highlight-text"">THE Mind ジャーナリングノートは、<strong>""自分の感情""に気づき、言葉にし、理解していくことで、人生を整えていくノート</strong>です。</p>
+                <div class=""question-block"">
+                    <div class=""question"">
+                        <div class=""question-icon"">🖊️</div>
+                        <div class=""question-text"">印象的だった感情をいくつでも書き出してみよう：</div>
+                    </div>
+                    <div class=""example"">不安／怒り／安心／寂しさ／喜び／無力感 など</div>
+                    
+                    <div class=""emotion-map"">
+                        <span class=""emotion-bubble positive"">喜び</span>
+                        <span class=""emotion-bubble negative"">不安</span>
+                        <span class=""emotion-bubble negative"">怒り</span>
+                        <span class=""emotion-bubble positive"">安心</span>
+                        <span class=""emotion-bubble negative"">寂しさ</span>
+                        <span class=""emotion-bubble negative"">無力感</span>
+                        <span class=""emotion-bubble positive"">達成感</span>
+                        <span class=""emotion-bubble neutral"">驚き</span>
                     </div>
                     
-                    <p>このノートの中には、怒り、不安、喜び、安心、嫉妬、寂しさ、そして「感情がない」と感じる日まで、あらゆる感情と向き合うページが用意されています。</p>
-                    
-                    <div class=""emotion-grid"">
-                        <div class=""emotion-card"">
-                            <div class=""emotion-emoji"">😠</div>
-                            <div class=""emotion-name"">怒り</div>
-                        </div>
-                        <div class=""emotion-card"">
-                            <div class=""emotion-emoji"">😟</div>
-                            <div class=""emotion-name"">不安</div>
-                        </div>
-                        <div class=""emotion-card"">
-                            <div class=""emotion-emoji"">😊</div>
-                            <div class=""emotion-name"">喜び</div>
-                        </div>
-                        <div class=""emotion-card"">
-                            <div class=""emotion-emoji"">😌</div>
-                            <div class=""emotion-name"">安心</div>
-                        </div>
-                        <div class=""emotion-card"">
-                            <div class=""emotion-emoji"">😒</div>
-                            <div class=""emotion-name"">嫉妬</div>
-                        </div>
-                        <div class=""emotion-card"">
-                            <div class=""emotion-emoji"">😔</div>
-                            <div class=""emotion-name"">寂しさ</div>
-                        </div>
-                        <div class=""emotion-card"">
-                            <div class=""emotion-emoji"">😐</div>
-                            <div class=""emotion-name"">感情がない日</div>
-                        </div>
-                    </div>
-                    
-                    <p>ここに書き込むことで、あなたの内側にある以下のものが、静かに、でも確かに現れてきます：</p>
-                    
-                    <div style=""margin: 20px 0 20px 20px;"">
-                        <div class=""list-item"">
-                            <div class=""list-icon"">•</div>
-                            <div>わかってほしかった気持ち</div>
-                        </div>
-                        <div class=""list-item"">
-                            <div class=""list-icon"">•</div>
-                            <div>本当は大切にしたかったこと</div>
-                        </div>
-                        <div class=""list-item"">
-                            <div class=""list-icon"">•</div>
-                            <div>自分でも気づいていなかった本音</div>
-                        </div>
-                    </div>
-                    
-                    <h3 style=""color: #2A4365; margin-top: 30px; font-size: 20px;"">使い方は自由です</h3>
-                    
-                    <div style=""margin: 20px 0 0 20px;"">
-                        <div class=""list-item"">
-                            <div class=""list-icon"">✓</div>
-                            <div>毎日1ページでも</div>
-                        </div>
-                        <div class=""list-item"">
-                            <div class=""list-icon"">✓</div>
-                            <div>週末にまとめてでも</div>
-                        </div>
-                        <div class=""list-item"">
-                            <div class=""list-icon"">✓</div>
-                            <div>モヤモヤしたときだけでも</div>
-                        </div>
-                    </div>
-                    
-                    <p style=""margin-top: 20px;"">あなたのペースで、このノートを<strong>""自分との対話の場""</strong>として使ってください。</p>
-                </div>
-            </div>
-            
-            <div class=""section"">
-                <div class=""section-header"">
-                    <div class=""section-emoji"">🌱</div>
-                    <h2 class=""section-title"">「感情に気づくこと」がなぜ大切か</h2>
-                </div>
-                
-                <div class=""two-column"">
-                    <div class=""column"">
-                        <div class=""card"">
-                            <h3 style=""color: #2A4365; margin-bottom: 15px; font-size: 18px;"">日々の思考と感情</h3>
-                            <p>私たちは日々、たくさんのことを「考えて」います。<br>でも、同じくらい、あるいはそれ以上に「感じて」もいます。</p>
-                            <p style=""margin-top: 15px;"">嬉しい、悔しい、焦る、寂しい、でも…それらを<strong>きちんと感じきることは、意外と難しい</strong>ものです。</p>
-                        </div>
-                    </div>
-                    
-                    <div class=""column"">
-                        <div class=""card"">
-                            <h3 style=""color: #2A4365; margin-bottom: 15px; font-size: 18px;"">感情を無視する影響</h3>
-                            <p>感情を無視したり、我慢したり、感じないふりをしていると、やがて心の中に「モヤ」や「重さ」として積もっていきます。</p>
-                            <p style=""margin-top: 15px;"">すると、自分のことがわからなくなったり、人との関係がぎこちなくなったり、""なぜか生きづらい""と感じるようになってしまいます。</p>
-                        </div>
+                    <div class=""input-field"">
+                        ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
                     </div>
                 </div>
                 
-                <div class=""highlight-box"" style=""margin-top: 30px;"">
-                    <p class=""highlight-text""><strong>感情に気づくことは「自分を知ること」そのもの</strong>。<br>
-                    気づいて、認めて、受け止めたとき、それだけで、少しずつ心が整い、「私は私でいい」と感じられるようになります。</p>
-                </div>
-                
-                <div class=""process-flow"">
-                    <div class=""process-step"">
-                        <div class=""step-circle"">気づく</div>
-                        <div class=""step-text"">感情を認識する</div>
+                <div class=""question-block"">
+                    <div class=""question"">
+                        <div class=""question-icon"">🖊️</div>
+                        <div class=""question-text"">その感情は、どんな場面でよく現れていた？</div>
                     </div>
-                    <div class=""process-step"">
-                        <div class=""step-circle"">認める</div>
-                        <div class=""step-text"">その感情を否定しない</div>
-                    </div>
-                    <div class=""process-step"">
-                        <div class=""step-circle"">受け止める</div>
-                        <div class=""step-text"">自分の一部として受け入れる</div>
-                    </div>
-                    <div class=""process-step"">
-                        <div class=""step-circle"">整う</div>
-                        <div class=""step-text"">心が自然と調和する</div>
-                    </div>
-                </div>
-                
-                <p style=""text-align: center; margin-top: 20px; font-size: 18px; color: #2A4365;""><strong>このノートは、そのための練習帳です。</strong></p>
-            </div>
-            
-            <div class=""section"">
-                <div class=""section-header"">
-                    <div class=""section-emoji"">✍</div>
-                    <h2 class=""section-title"">書き方のヒント</h2>
-                </div>
-                
-                <div class=""card"">
-                    <p>書くことが苦手な人でも大丈夫。<br>
-                    THE Mindでは「正解を書く」「うまくまとめる」必要はまったくありません。<br>
-                    むしろ、「なんとなく」「よくわからないけど」「うーん、たぶん…」という<br>
-                    <strong>あいまいな言葉でOK。</strong></p>
-                    
-                    <p style=""margin-top: 20px;"">以下のヒントを参考に、気楽に始めてみましょう。</p>
-                    
-                    <div class=""tips-container"">
-                        <div class=""tip-card"">
-                            <div class=""tip-header"">
-                                <div class=""tip-icon"">✅</div>
-                                <div class=""tip-title"">単語でもOK</div>
-                            </div>
-                            <p>「イライラ」「疲れた」「しんどい」「助かった」</p>
-                        </div>
-                        
-                        <div class=""tip-card"">
-                            <div class=""tip-header"">
-                                <div class=""tip-icon"">✅</div>
-                                <div class=""tip-title"">箇条書きでもOK</div>
-                            </div>
-                            <p>「○○された → もやっとした」「△△見て、うれしかった」</p>
-                        </div>
-                        
-                        <div class=""tip-card"">
-                            <div class=""tip-header"">
-                                <div class=""tip-icon"">✅</div>
-                                <div class=""tip-title"">途中でやめてもOK</div>
-                            </div>
-                            <p>全部書かなくていい。1行でも自分に寄り添えたら十分。</p>
-                        </div>
-                        
-                        <div class=""tip-card"">
-                            <div class=""tip-header"">
-                                <div class=""tip-icon"">✅</div>
-                                <div class=""tip-title"">書けない日があってもOK</div>
-                            </div>
-                            <p>続けることが大事なのではなく、「感じること」に立ち返れたら◎</p>
-                        </div>
-                    </div>
-                    
-                    <div class=""highlight-box"" style=""margin-top: 30px;"">
-                        <p class=""highlight-text"">大切なのは、「うまく書くこと」ではなく、<br>
-                        <strong>""心にスペースをつくること""</strong>です。</p>
+                    <div class=""example"">仕事中／人間関係の中／ひとりの時間</div>
+                    <div class=""input-field"">
+                        ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
                     </div>
                 </div>
             </div>
             
-            <div class=""final-message"">
-                <h3 class=""final-title"">🫧 最後に</h3>
-                <div class=""final-text"">
-                    <p>このノートは、<br>
-                    感情に気づき、<br>
-                    自分にやさしくなり、<br>
-                    本当の望みを取り戻すための旅です。</p>
-                    
-                    <p style=""margin-top: 20px;"">どんな感情もあなたの味方。<br>
-                    「感情を感じられる自分」を、どうか誇りに思ってください。</p>
-                    
-                    <p style=""margin-top: 20px; font-style: italic;"">あなたがあなたとつながれる時間になりますように。</p>
+            <div class=""card"">
+                <div class=""card-header"">
+                    <div class=""card-number"">2</div>
+                    <h3 class=""card-title"">その感情が教えてくれたこと</h3>
                 </div>
+                
+                <div class=""question-block"">
+                    <div class=""question"">
+                        <div class=""question-icon"">🖊️</div>
+                        <div class=""question-text"">感情を通して、気づいた「私にとって大事なもの」「本音」は何？</div>
+                    </div>
+                    <div class=""example"">「安心できる人との関係を大切にしたい」「私は本当はもっと休みたい」</div>
+                    <div class=""input-field"">
+                        ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+                    </div>
+                </div>
+                
+                <div class=""question-block"">
+                    <div class=""question"">
+                        <div class=""question-icon"">🖊️</div>
+                        <div class=""question-text"">「こういうとき、私はこう感じるんだな」と理解が深まった気づきはある？</div>
+                    </div>
+                    <div class=""input-field"">
+                        ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+                    </div>
+                </div>
+            </div>
+            
+            <div class=""card"">
+                <div class=""card-header"">
+                    <div class=""card-number"">3</div>
+                    <h3 class=""card-title"">この1ヶ月で変化した思考やビリーフは？</h3>
+                </div>
+                
+                <div class=""question-block"">
+                    <div class=""question"">
+                        <div class=""question-icon"">🖊️</div>
+                        <div class=""question-text"">以前の自分なら信じていたけど、今は少し手放せた価値観や思い込みは？</div>
+                    </div>
+                    <div class=""example"">「頑張らないと愛されない」→「そのままでも十分」</div>
+                    <div class=""input-field"">
+                        ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+                    </div>
+                </div>
+                
+                <div class=""question-block"">
+                    <div class=""question"">
+                        <div class=""question-icon"">🖊️</div>
+                        <div class=""question-text"">逆に「これは私にとって大事だ」と再確認したことは？</div>
+                    </div>
+                    <div class=""input-field"">
+                        ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+                    </div>
+                </div>
+            </div>
+            
+            <div class=""card"">
+                <div class=""card-header"">
+                    <div class=""card-number"">4</div>
+                    <h3 class=""card-title"">この1ヶ月を通しての""私の変化""を自由に言葉にしてみよう</h3>
+                </div>
+                
+                <div class=""question-block"">
+                    <div class=""question"">
+                        <div class=""question-icon"">🖊️</div>
+                        <div class=""question-text"">感情とのつきあい方／自分への向き合い方／日常での変化など自由に記述</div>
+                    </div>
+                    <div class=""example"">イライラしても立ち止まれるようになった／「感じてもいい」と思えるようになった</div>
+                    <div class=""input-field"">
+                        ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+                    </div>
+                </div>
+            </div>
+            
+            <div class=""card"">
+                <div class=""card-header"">
+                    <div class=""card-number"">5</div>
+                    <h3 class=""card-title"">来月、大切にしたい感情・行動</h3>
+                </div>
+                
+                <div class=""question-block"">
+                    <div class=""question"">
+                        <div class=""question-icon"">🖊️</div>
+                        <div class=""question-text"">来月は、どんな感情をもっと感じていたい？どんな感覚とつながりたい？</div>
+                    </div>
+                    <div class=""example"">安心感／自信／心地よさ／自由</div>
+                    <div class=""emotion-map"">
+                        <span class=""emotion-bubble positive"">安心感</span>
+                        <span class=""emotion-bubble positive"">自信</span>
+                        <span class=""emotion-bubble positive"">心地よさ</span>
+                        <span class=""emotion-bubble positive"">自由</span>
+                        <span class=""emotion-bubble positive"">喜び</span>
+                        <span class=""emotion-bubble positive"">充実感</span>
+                    </div>
+                    <div class=""input-field"">
+                        ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+                    </div>
+                </div>
+                
+                <div class=""question-block"">
+                    <div class=""question"">
+                        <div class=""question-icon"">🖊️</div>
+                        <div class=""question-text"">それを大切にするために、具体的にやってみたい行動や姿勢は？</div>
+                    </div>
+                    <div class=""example"">予定を詰め込みすぎない／頼る／ひとり時間を確保する</div>
+                    <div class=""input-field"">
+                        ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+                    </div>
+                </div>
+            </div>
+            
+            <div class=""quote-section"">
+                <div class=""quote-icon"">🌟</div>
+                <div class=""quote-content"">
+                    「感情を記録することは、<br>
+                    ""人生の内側""を旅すること。<br>
+                    あなたが感じてきたすべての瞬間に意味があり、<br>
+                    その気づきは、確実にあなたの生き方を変えていきます。」
+                </div>
+            </div>
+            
+            <div class=""usage-section"">
+                <h3 class=""usage-title""><span class=""icon"">✨</span> このワークの使い方と意図</h3>
+                <ul class=""usage-list"">
+                    <li><strong>""変化を認識する力""</strong>が<span class=""highlight-text"">自己信頼の強化</span>につながります</li>
+                    <li>感情日記の点が、""自分という線""につながっていく実感を得られます</li>
+                    <li>来月に向けて「意識したい感情」と「行動」を明確にし、<span class=""highlight-text"">心の羅針盤を整える</span>ことができます</li>
+                </ul>
             </div>
         </div>
         
         <footer>
-            <p>© 2023 THE Mind ジャーナリングノート | 作成日: 2023年10月</p>
+            <p>© THE MIND ジャーナル</p>
+            <p>感情を記録することから、自己理解と成長が始まります。</p>
         </footer>
     </div>
 </body>
